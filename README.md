@@ -1,0 +1,1 @@
+# Powerimo Java Common library
