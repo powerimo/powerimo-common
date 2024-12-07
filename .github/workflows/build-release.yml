@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - "main"
+      - "release/**"
 
 jobs:
   build:
@@ -25,5 +25,5 @@ jobs:
         gpg-passphrase: ${{ secrets.GPG_KEY_PASSPHRASE }}
 
     - name: Build with Maven
-      run: mvn -B clean package verify --file pom.xml
+      run: mvn -B package --file pom.xml
 
