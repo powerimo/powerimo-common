@@ -16,6 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--suppress UnresolvedMavenProperty -->
         <gpg.passphrase>${env.GPG_KEY_PASSPHRASE}</gpg.passphrase>
+        <gpg.keyname>ossrh</gpg.keyname>
     </properties>
 
     <dependencies>
@@ -186,7 +187,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <passphrase>${gpg.passphrase}</passphrase>
+                    <keyname>${gpg.keyname}</keyname>
+                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
                 </configuration>
             </plugin>
 
