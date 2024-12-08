@@ -38,7 +38,7 @@ jobs:
         gpg --list-secret-keys
 
     - name: Build with Maven
-      run: mvn -B -X clean package verify deploy -Drevision=${{ env.RELEASE_VERSION }} --file pom.xml
+      run: mvn -B clean package verify deploy -Drevision=${{ env.RELEASE_VERSION }} --file pom.xml
       env:
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
         MAVEN_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
