@@ -29,8 +29,6 @@ jobs:
         server-id: ossrh
         server-username: ${{ secrets.OSSRH_USERNAME }}
         server-password: ${{ secrets.OSSRH_PASSWORD }}
-        gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-        gpg-passphrase: ${{ secrets.GPG_KEY_PASSPHRASE }}
         overwrite-settings: true
 
     - name: Check GPG
