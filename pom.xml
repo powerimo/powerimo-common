@@ -6,7 +6,7 @@
 
     <groupId>org.powerimo</groupId>
     <artifactId>powerimo-common</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <description>Powerimo common classes and utils</description>
     <url>https://github.com/powerimo/powerimo-common</url>
 
@@ -14,9 +14,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--suppress UnresolvedMavenProperty -->
-        <gpg.passphrase>${env.GPG_KEY_PASSPHRASE}</gpg.passphrase>
-        <gpg.keyname>ossrh</gpg.keyname>
+        <revision>1.0-SNAPSHOT</revision>
     </properties>
 
     <dependencies>
@@ -87,17 +85,6 @@
         <developerConnection>scm:git:ssh://github.com/powerimo/powerimo-common.git</developerConnection>
         <url>https://github.com/powerimo/powerimo-common</url>
     </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories</url>
-        </repository>
-    </distributionManagement>
 
     <build>
         <plugins>
@@ -191,14 +178,17 @@
                 </configuration>
             </plugin>
 
+            <!-- Maven Central Publishing -->
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.4.0</version>
+                <version>0.6.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>ossrh</publishingServerId>
-                    <tokenAuth>true</tokenAuth>
+                    <autoPublish>false</autoPublish>
+                    <waitUntil>uploaded</waitUntil>
+                    <deploymentName>${project.artifactId}:${project.version}</deploymentName>
                 </configuration>
             </plugin>
 
