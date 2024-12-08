@@ -14,10 +14,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gpg.executable>gpg</gpg.executable>
         <!--suppress UnresolvedMavenProperty -->
         <gpg.passphrase>${env.GPG_KEY_PASSPHRASE}</gpg.passphrase>
-        <gpg.args>--batch --pinentry-mode loopback</gpg.args>
     </properties>
 
     <dependencies>
@@ -177,7 +175,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
+                <version>3.2.7</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -188,7 +186,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <gpgArguments>${gpg.args}</gpgArguments>
                     <passphrase>${gpg.passphrase}</passphrase>
                 </configuration>
             </plugin>
