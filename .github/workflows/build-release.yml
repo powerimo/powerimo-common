@@ -44,4 +44,4 @@ jobs:
         MAVEN_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
 
     - name: Deploy to the Central
-      run: mvn -B deploy --file pom.xml
+      run: mvn -B deploy --file pom.xml -X
