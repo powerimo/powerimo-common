@@ -39,7 +39,7 @@ jobs:
         cat ~/.m2/settings.xml
 
     - name: Build with Maven
-      run: mvn -B clean package verify deploy -Drevision=${{ env.RELEASE_VERSION }} --file pom.xml
+      run: mvn -B clean package verify deploy -Drevision=${{ env.RELEASE_VERSION }} -Dossrh.username=${{ secrets.OSSRH_USERNAME }} -Dossrh.password=${{ secrets.OSSRH_PASSWORD }} --file pom.xml
       env:
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
         MAVEN_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
