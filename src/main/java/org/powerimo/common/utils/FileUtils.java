@@ -1,6 +1,8 @@
 package org.powerimo.common.utils;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -54,12 +56,18 @@ public class FileUtils {
                 .map(f -> f.substring(fileName.lastIndexOf(".") + 1));
     }
 
+    /**
+     * Extract the file name from a given file path string
+     * @param path Path string
+     * @return Optional of file name
+     */
     public static Optional<String> getFileNameFromPath(String path) {
-        if (path == null)
+        try {
+            Path p = Paths.get(path);
+            return Optional.of(p.getFileName().toString());
+        } catch (Exception e) {
             return Optional.empty();
-        var delimiterPosition = path.lastIndexOf(File.pathSeparator);
-        var fn = path.substring(delimiterPosition + 1);
-        return Optional.of(fn);
+        }
     }
 
 

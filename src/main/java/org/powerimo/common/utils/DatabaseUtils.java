@@ -12,6 +12,12 @@ import java.time.ZoneOffset;
 
 public class DatabaseUtils {
 
+    /**
+     * Check the column exist in ResultSet
+     * @param resultSet ResultSet fto check
+     * @param columnName The column name
+     * @return `true` if column exist. Otherwise `false`
+     */
     public static boolean isColumnExists(ResultSet resultSet, String columnName) {
         try {
             ResultSetMetaData rsmd = resultSet.getMetaData();
@@ -35,6 +41,13 @@ public class DatabaseUtils {
         }
     }
 
+    /**
+     * Read field as Instant. It's useful for such RDBMS as PostgreSQL.
+     * @param rs ResultSet
+     * @param fieldName Field name
+     * @return Instant object or `null`
+     * @throws SQLException on any SQL exception
+     */
     public static Instant readAsInstant(ResultSet rs, String fieldName) throws SQLException {
         OffsetDateTime tmpDate = rs.getObject(fieldName, OffsetDateTime.class);
         if (tmpDate == null)
@@ -48,6 +61,15 @@ public class DatabaseUtils {
         return value.toInstant(ZoneOffset.UTC);
     }
 
+    /**
+     * Read a value from a ResultSet and convert it into an enum value of the specified enum type
+     * @param rs ResultSet
+     * @param fieldName Field name
+     * @param enumClass Expected enumeration class of value
+     * @return Enumeration value
+     * @param <E> Enum class
+     * @throws SQLException Database exception if occurred
+     */
     public static <E extends Enum<E>> E readEnumValue(ResultSet rs, String fieldName, Class<E> enumClass) throws SQLException {
         final String stringValue = rs.getString(fieldName);
         if (stringValue == null)

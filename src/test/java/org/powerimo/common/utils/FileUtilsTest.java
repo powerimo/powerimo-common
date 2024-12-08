@@ -3,7 +3,11 @@ package org.powerimo.common.utils;
 import org.junit.jupiter.api.Test;
 import org.powerimo.common.utils.FileUtils;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class FileUtilsTest {
 
@@ -28,6 +32,20 @@ class FileUtilsTest {
         assertEquals("file", FileUtils.getFileNameExtension(fn).orElse(""));
     }
 
+    @Test
+    void test_getFileNameFromPath_1() {
+        String path = "C:\\home\\user\\test.txt";
+        assertEquals("test.txt", FileUtils.getFileNameFromPath(path).orElse(""));
+    }
 
+    @Test
+    void test_getFileNameFromPath_2() {
+        String path = "/home/user/test.txt";
+        assertEquals("test.txt", FileUtils.getFileNameFromPath(path).orElse(""));
+    }
 
+    @Test
+    void test_getFileNameFromPath_3() {
+        assertNull(FileUtils.getFileNameFromPath(null).orElse(null));
+    }
 }
