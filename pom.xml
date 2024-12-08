@@ -17,6 +17,7 @@
         <gpg.executable>gpg</gpg.executable>
         <!--suppress UnresolvedMavenProperty -->
         <gpg.passphrase>${env.GPG_KEY_PASSPHRASE}</gpg.passphrase>
+        <gpg.args>--batch --pinentry-mode loopback</gpg.args>
     </properties>
 
     <dependencies>
@@ -186,6 +187,10 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <gpgArguments>${gpg.args}</gpgArguments>
+                    <passphrase>${gpg.passphrase}</passphrase>
+                </configuration>
             </plugin>
 
             <plugin>
