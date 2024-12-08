@@ -198,6 +198,7 @@
                     <publishingServerId>ossrh</publishingServerId>
                     <autoPublish>true</autoPublish>
                     <waitUntil>uploaded</waitUntil>
+                    <tokenAuth>true</tokenAuth>
                 </configuration>
             </plugin>
 
