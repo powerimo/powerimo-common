@@ -86,17 +86,6 @@
         <url>https://github.com/powerimo/powerimo-common</url>
     </scm>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories</url>
-        </repository>
-    </distributionManagement>
-
     <build>
         <plugins>
 
