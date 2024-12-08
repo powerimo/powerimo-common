@@ -1,5 +1,9 @@
 name: Build
 
+env:
+  OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+  OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+
 on:
   push:
     branches:
@@ -27,8 +31,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
         server-id: ossrh
-        server-username: ${{ secrets.OSSRH_USERNAME }}
-        server-password: ${{ secrets.OSSRH_PASSWORD }}
+        server-username: OSSRH_USERNAME
+        server-password: OSSRH_PASSWORD
         overwrite-settings: true
 
     - name: Check GPG
@@ -37,7 +41,7 @@ jobs:
         cat ~/.m2/settings.xml
 
     - name: Build with Maven
-      run: mvn -B clean package verify deploy -Drevision=${{ env.RELEASE_VERSION }} -Dossrh.username=${{ secrets.OSSRH_USERNAME }} -Dossrh.password=${{ secrets.OSSRH_PASSWORD }} --file pom.xml
+      run: mvn -B clean package verify deploy -Drevision=${{ env.RELEASE_VERSION }} --file pom.xml
       env:
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
         MAVEN_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
