@@ -63,12 +63,11 @@ public class FileUtils {
      */
     public static Optional<String> getFileNameFromPath(String path) {
         try {
-            Path p = Paths.get(path);
+            Path p = Paths.get(path.replace("\\", File.separator).replace("/", File.separator));
             return Optional.of(p.getFileName().toString());
         } catch (Exception e) {
             return Optional.empty();
         }
     }
-
 
 }
