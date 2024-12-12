@@ -6,8 +6,7 @@ import org.powerimo.common.utils.Utils;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UtilsTest {
 
@@ -73,7 +72,7 @@ public class UtilsTest {
     @SuppressWarnings("all")
     void masqueradeKeyEmptyTest() {
         var m = Utils.masqueradeKey(null, 10, 1);
-        Assertions.assertNull(m);
+        assertNull(m);
     }
 
 
@@ -100,4 +99,26 @@ public class UtilsTest {
         assertEquals(5, Utils.stringToIntegerDef(s, 5));
     }
 
+    @Test
+    void extractSourceExceptionTextSingleExceptionTest() {
+        var exception = new Exception("Root exception");
+        var result = Utils.extractSourceExceptionText(exception);
+        assertNotNull(result);
+        assertEquals("Root exception", result);
+    }
+
+    @Test
+    void extractSourceExceptionTextNestedExceptionTest() {
+        var innerException = new Exception("Inner exception");
+        var outerException = new Exception("Outer exception", innerException);
+        var result = Utils.extractSourceExceptionText(outerException);
+        assertNotNull(result);
+        assertEquals("Inner exception", result);
+    }
+
+    @Test
+    void extractSourceExceptionTextNullTest() {
+        var result = Utils.extractSourceExceptionText(null);
+        assertNull(result);
+    }
 }

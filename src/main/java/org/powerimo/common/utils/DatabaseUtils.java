@@ -55,6 +55,12 @@ public class DatabaseUtils {
         return tmpDate.toInstant();
     }
 
+    /**
+     * Converts a LocalDateTime instance to an Instant in UTC.
+     *
+     * @param value the LocalDateTime object to convert, may be null
+     * @return the corresponding Instant object in UTC, or null if the input was null
+     */
     public static Instant asInstant(LocalDateTime value) {
         if (value == null)
             return null;
@@ -62,13 +68,15 @@ public class DatabaseUtils {
     }
 
     /**
-     * Read a value from a ResultSet and convert it into an enum value of the specified enum type
-     * @param rs ResultSet
-     * @param fieldName Field name
-     * @param enumClass Expected enumeration class of value
-     * @return Enumeration value
-     * @param <E> Enum class
-     * @throws SQLException Database exception if occurred
+     * Reads a value from a ResultSet column and converts it to the corresponding Enum constant.
+     *
+     * @param rs       the ResultSet object to read the value from
+     * @param fieldName the name of the column in the ResultSet
+     * @param enumClass the class of the Enum type to which the value should be mapped
+     * @param <E>       the Enum type
+     * @return the Enum constant that corresponds to the value read from the column,
+     *         or null if the column value is null
+     * @throws SQLException if an SQL exception occurs while reading the ResultSet
      */
     public static <E extends Enum<E>> E readEnumValue(ResultSet rs, String fieldName, Class<E> enumClass) throws SQLException {
         final String stringValue = rs.getString(fieldName);

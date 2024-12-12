@@ -4,6 +4,7 @@ import org.powerimo.common.model.ResponseEnvelope;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Deprecated
 public class ResponseUtils {
 
     public static ResponseEnvelope dataEnvelope(HttpServletRequest request, Object resultData) {
