@@ -26,6 +26,8 @@ public class Utils {
     }
 
     public static String extractSourceExceptionText(Throwable ex) {
+        if (ex == null)
+            return null;
         if (ex.getCause() != null) {
             return extractSourceExceptionText(ex.getCause());
         } else {
