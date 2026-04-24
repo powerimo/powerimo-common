@@ -144,7 +144,6 @@ public class MockJakartaRequest implements HttpServletRequest {
         return false;
     }
 
-    @Override
     public boolean isRequestedSessionIdFromUrl() {
         return false;
     }
@@ -304,7 +303,6 @@ public class MockJakartaRequest implements HttpServletRequest {
         return null;
     }
 
-    @Override
     public String getRealPath(String s) {
         return null;
     }
@@ -361,6 +359,21 @@ public class MockJakartaRequest implements HttpServletRequest {
 
     @Override
     public DispatcherType getDispatcherType() {
+        return null;
+    }
+
+    @Override
+    public ServletConnection getServletConnection() {
+        return null;
+    }
+
+    @Override
+    public String getProtocolRequestId() {
+        return null;
+    }
+
+    @Override
+    public String getRequestId() {
         return null;
     }
 }
