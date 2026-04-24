@@ -17,11 +17,11 @@ import java.util.HashMap;
 public class ResponseEnvelope<T> implements Serializable {
     private String message;
     private T data;
-    protected int httpStatus = HttpServletResponse.SC_OK;
+    @Builder.Default protected int httpStatus = HttpServletResponse.SC_OK;
     protected String path;
-    protected LocalDateTime timestamp = LocalDateTime.now(ZoneOffset.UTC);
+    @Builder.Default protected LocalDateTime timestamp = LocalDateTime.now(ZoneOffset.UTC);
     protected String dataClassName;
-    protected HashMap<String, Object> details = new HashMap<>();
+    @Builder.Default protected HashMap<String, Object> details = new HashMap<>();
     private static final int DEFAULT_ERROR_STATUS = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 
     public ResponseEnvelope() {
