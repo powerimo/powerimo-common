@@ -13,7 +13,7 @@ public class SearchItem {
     private String fieldName;
     private SearchCondition condition;
     private Object value;
-    private boolean ignoreIfNull = true;
+    @Builder.Default private boolean ignoreIfNull = true;
 
     public static SearchItem of(String fieldName, SearchCondition condition, Object value) {
         return SearchItem.builder()
