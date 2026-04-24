@@ -30,17 +30,25 @@ public class ResponseEnvelope<T> implements Serializable {
 
     public ResponseEnvelope(String message) {
         this.message = message;
+        httpStatus = HttpServletResponse.SC_OK;
+        timestamp = LocalDateTime.now(ZoneOffset.UTC);
+        details = new HashMap<>();
     }
 
     public ResponseEnvelope(String message, String path) {
         this.message = message;
         this.path = path;
+        httpStatus = HttpServletResponse.SC_OK;
+        timestamp = LocalDateTime.now(ZoneOffset.UTC);
+        details = new HashMap<>();
     }
 
     public ResponseEnvelope(String message, String path, int status1) {
         this.message = message;
         this.path = path;
         httpStatus = status1;
+        timestamp = LocalDateTime.now(ZoneOffset.UTC);
+        details = new HashMap<>();
     }
 
     public ResponseEnvelope<?> setStatus(int status1) {

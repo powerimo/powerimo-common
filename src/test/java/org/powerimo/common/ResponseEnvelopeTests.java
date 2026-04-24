@@ -88,7 +88,7 @@ public class ResponseEnvelopeTests {
                 .status(HttpServletResponse.SC_BAD_REQUEST)
                 .build();
         assertNotNull(ab);
-        assertEquals(ab.getHttpStatus(), 400);
+        assertEquals(400, ab.getHttpStatus());
     }
 
     @Test
@@ -103,7 +103,7 @@ public class ResponseEnvelopeTests {
                 .status(HttpServletResponse.SC_BAD_REQUEST)
                 .build();
         assertNotNull(ab);
-        assertEquals(ab.getHttpStatus(), 400);
+        assertEquals(400, ab.getHttpStatus());
         Assertions.assertTrue(ab.toString().contains("/v1/test"));
     }
 
