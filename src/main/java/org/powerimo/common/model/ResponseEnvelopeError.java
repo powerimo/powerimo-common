@@ -1,8 +1,8 @@
 package org.powerimo.common.model;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.*;
 
-import javax.servlet.http.HttpServletResponse;
 
 @Getter
 @Setter
